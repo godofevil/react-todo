@@ -4,12 +4,21 @@
         align-items: center
         justify-content: space-between
         transition: all .5s ease
+        animation: test .5s cubic-bezier(0.19, 1, 0.22, 1)
         & > *
             cursor: pointer
     &__checkbox
         width: 20px
         height: 20px
     &__text
-        font-size: 2rem        
+        font-size: 2rem
         &--checked
             text-decoration: line-through
+            color: #ccc
+
+
+@keyframes test
+    0%
+        width: 0
+    100%
+        width: 100%

@@ -9,7 +9,7 @@ class AddTask extends React.Component {
         }
     }
 
-    changeTaskTitleValue = e => this.setState({taskTitle: e.target.value});
+    setTaskTitleValue = e => this.setState({taskTitle: e.target.value});
 
     addItem = () => {
         const {taskTitle} = this.state;
@@ -23,7 +23,7 @@ class AddTask extends React.Component {
         return(
             <div className="add__task form-group">
                 <input
-                    onChange={this.changeTaskTitleValue}
+                    onChange={this.setTaskTitleValue}
                     onKeyPress={this.addOnEnterPressed}
                     value={this.state.taskTitle}
                     placeholder="Add new task"

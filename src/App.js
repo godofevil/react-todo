@@ -12,7 +12,7 @@ class App extends React.Component {
         }
     }
 
-    addItem = taskTitle => {
+    addItem = taskTitle =>
         this.setState(state =>
             state.taskItems.push(
                 {
@@ -21,8 +21,7 @@ class App extends React.Component {
                     done: false,
                 }
             )
-        )
-    };
+        );
 
     checkItem = id => this.setState(state => {
         const checked = this.state.taskItems.find(item => item.id == id);

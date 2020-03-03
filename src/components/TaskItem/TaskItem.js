@@ -1,7 +1,7 @@
 import React from 'react';
 import './TaskItem.sass'
 
-const TaskItem = (props) =>
+const TaskItem = props =>
     <div
         className={!props.done ? "task__item alert alert-success" : "task__item alert alert-secondary"}
     >
