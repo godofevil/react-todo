@@ -6,12 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends React.Component {
     constructor(props){
         super(props);
+        !localStorage.length && localStorage.setItem('tasks', '[]');
         this.state = {
-            taskItems: []
+            taskItems: JSON.parse(localStorage.getItem('tasks'))
         }
     }
 
-    addItem = taskTitle =>
+    addItem = taskTitle => {
         this.setState(state =>
             state.taskItems.push(
                 {
@@ -20,7 +21,8 @@ class App extends React.Component {
                     done: false,
                 }
             )
-        );
+        )
+    };
 
     checkItem = id => this.setState(state => {
         const checked = this.state.taskItems.find(item => item.id == id);
@@ -30,6 +32,7 @@ class App extends React.Component {
     deleteItem = id => this.setState({taskItems: this.state.taskItems.filter(item => item.id != id)});
 
     render() {
+        localStorage.setItem('tasks', JSON.stringify(this.state.taskItems));
         return(
             <div className="app">
                 {this.state.taskItems.map(item =>
