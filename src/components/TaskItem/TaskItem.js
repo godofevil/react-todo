@@ -18,7 +18,7 @@ const TaskItem = (props) =>
             {props.text}
         </span>
         <span onClick={props.deleteItem} className="task__button btn btn-danger">
-            ❌
+            ×
         </span>
     </div>
 
