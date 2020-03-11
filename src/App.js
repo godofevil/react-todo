@@ -24,25 +24,27 @@ class App extends React.Component {
         );
 
     checkItem = id => this.setState(state => {
-        const checked = this.state.taskItems.find(item => item.id == id);
+        const checked = this.state.taskItems.find(item => item.id === id);
         return checked.done = !checked.done;
     });
 
-    deleteItem = id => this.setState({taskItems: this.state.taskItems.filter(item => item.id != id)});
+    deleteItem = id => this.setState({taskItems: this.state.taskItems.filter(item => item.id !== id)});
 
     render() {
         localStorage.setItem('tasks', JSON.stringify(this.state.taskItems));
         return(
             <div className="app">
-                {this.state.taskItems.map(item =>
-                    <TaskItem
-                        checkItem={() => this.checkItem(item.id)}
-                        deleteItem={() => this.deleteItem(item.id)}
-                        text={item.text}
-                        done={item.done}
-                        key={item.id}
-                    />
-                )}
+                {this.state.taskItems                    
+                    .sort((a, b) => a.done - b.done)
+                    .map(item =>
+                        <TaskItem
+                            checkItem={() => this.checkItem(item.id)}
+                            deleteItem={() => this.deleteItem(item.id)}
+                            text={item.text}
+                            done={item.done}
+                            key={item.id}
+                        />
+                    )}
                 <AddTask addItem={this.addItem}/>
             </div>
         )
